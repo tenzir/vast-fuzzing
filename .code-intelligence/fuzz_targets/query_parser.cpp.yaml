@@ -1,0 +1,26 @@
+## The fuzz target type. If unspecified, the type is deduced from the
+## extension of the fuzz target source file.
+type: "c++"
+
+## If set to true, do not use the generic input corpus for this
+## fuzz target.
+# no_initial_corpus: false
+
+## Additional arguments to pass to the compiler during build
+compiler_extra_args:
+
+
+
+  - "-g"
+  - "  -Wl,-rpath,/tmp/vast/fuzz/build/vast/lib  vast/lib/libvast.so.2021.06  /usr/lib/x86_64-linux-gnu/libcaf_openssl.so  /usr/lib/x86_64-linux-gnu/libcaf_io.so  /usr/lib/x86_64-linux-gnu/libcaf_core.so  /usr/lib/x86_64-linux-gnu/libflatbuffers.a  /usr/lib/x86_64-linux-gnu/libspdlog.so.1.8.1  /usr/lib/x86_64-linux-gnu/libfmt.so.7.1.3  -Wl,--as-needed  /usr/lib/x86_64-linux-gnu/libsimdjson.so.5.0.0  -pthread  /usr/lib/x86_64-linux-gnu/libarrow.so.400.1.0  -ldl"
+
+## Additional arguments to pass to the fuzz target when it is executed
+# run_extra_args:
+
+##### This section is only for Java fuzz targets #####
+
+## Package filters to apply when instrumenting the source code.
+# instrumentation_filters:
+
+## List of jar dependencies needed by the fuzz target
+# jars:
