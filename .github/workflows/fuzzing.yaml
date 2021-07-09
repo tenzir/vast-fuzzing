@@ -1,10 +1,13 @@
 name: Code Intelligence Fuzzing
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch: {}
+  # TODO: Enable these once the repository enters "production-ready" state
+  # schedule:
+  #   # Run daily at 4AM
+  #   - cron: '0 4 * * *'
+  #push:
+  #  branches: [ master ]
 
 env:
   FUZZING_SERVER_ADDRESS: vast.app.code-intelligence.com:6773
