@@ -1,0 +1,27 @@
+name: Config Rebuild
+on:
+  schedule:
+    # Run daily at 2AM
+    - cron: '0 2 * * *'
+  workflow_dispatch: {}
+jobs:
+  rebuild:
+    name: Rebuild Fuzzing Config
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Pull vast-dev image
+        run: docker pull tenzir/vast-dev:latest
+      - name: Build fuzzer config
+        run: docker build . -t fuzzing-config
+      - name: Copy Generated Config back to Host
+        run: |
+          id=$(docker create fuzzing-config)
+          docker cp $id:/tmp/vast/fuzz/.code-intelligence/fuzz_targets .code-intelligence/
+          docker rm -v $id
+      - name: Push updated config
+        run: |
+          git config --global user.name 'Tenzir Automated Commit'
+          git config --global user.email 'tenzir-bot@tenzir.com'
+          git commit -am "Automated config update"
+          git push
