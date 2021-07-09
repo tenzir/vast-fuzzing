@@ -1,9 +1,9 @@
 name: Config Rebuild
 on:
+  workflow_dispatch: {}
   schedule:
     # Run daily at 2AM
     - cron: '0 2 * * *'
-  workflow_dispatch: {}
 jobs:
   rebuild:
     name: Rebuild Fuzzing Config
