@@ -14,7 +14,7 @@ build_container: "tenzir/vast-deps"
 
 ## A relative path to the build script that executes inside the container
 ## and builds the project. Relative to the project root directory.
-build_script: ".code-intelligence/build.sh"
+build_script: "./build.sh"
 
 ## Paths to the fuzz tests belonging to this test collection
 fuzz_tests:
