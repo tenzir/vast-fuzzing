@@ -13,7 +13,7 @@ jobs:
       - name: Pull vast-dev image
         run: docker pull tenzir/vast-dev:latest
       - name: Build fuzzer config
-        run: docker build . -t fuzzing-config
+        run: cd scripts && docker build . -t fuzzing-config
       - name: Copy Generated Config back to Host
         run: |
           id=$(docker create fuzzing-config)
